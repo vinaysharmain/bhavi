@@ -1,0 +1,246 @@
+/* Global styles */
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f8fafc;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Modern Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Layout adjustments */
+.main-container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.sidebar {
+  width: 380px !important;
+  min-width: 380px;
+}
+
+.message-area {
+  height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.message-bubble {
+  max-width: 85%;
+  margin: 8px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+  padding: 1rem 1.25rem;
+}
+
+.message-bubble:hover {
+  transform: translateY(-1px);
+}
+
+.message-team1 {
+  margin-right: auto;
+  background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+  border-left: 4px solid #3b82f6;
+}
+
+.message-team2 {
+  margin-left: auto;
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+  border-right: 4px solid #22c55e;
+}
+
+/* Animations */
+@keyframes typing {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+.animate-fade-out {
+  animation: fade-out 0.5s ease-out forwards;
+}
+
+/* Utility classes */
+.typing-indicator {
+  display: flex;
+  gap: 2px;
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background: #90cdf4;
+  border-radius: 50%;
+  animation: typing 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+.reaction-button {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.message-bubble:hover .reaction-button {
+  opacity: 1;
+}
+
+.reaction-popup {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 24px;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 4px;
+  z-index: 50;
+}
+
+.reaction-emoji {
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 16px;
+  transition: all 0.2s ease;
+}
+
+.reaction-emoji:hover {
+  background: #f3f4f6;
+  transform: scale(1.1);
+}
+
+.reactions-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.reaction-count {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Call controls */
+.call-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.call-status {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.call-status.active {
+  background: #DEF7EC;
+  color: #03543F;
+}
+
+.call-status.inactive {
+  background: #FDE8E8;
+  color: #9B1C1C;
+}
+
+.audio-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: pulse 1.5s infinite;
+}
+
+/* Compact sections */
+.compact-section {
+  padding: 0.75rem !important;
+}
+
+.compact-info {
+  font-size: 0.875rem;
+  padding: 0.5rem !important;
+}
+
+/* Fact checker */
+.fact-checker-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 280px);
+  margin-top: 0.5rem;
+}
+
+.fact-results {
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 0.75rem;
+  padding-right: 0.5rem;
+}
+
+/* Emoji picker modal */
+.emoji-picker-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.emoji-button {
+  padding: 0.5rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.emoji-button:hover {
+  background: #f3f4f6;
+  transform: scale(1.1);
+} 
